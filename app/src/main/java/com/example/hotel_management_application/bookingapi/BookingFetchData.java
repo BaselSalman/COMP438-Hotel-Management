@@ -46,12 +46,10 @@ public class BookingFetchData implements BookingFetchDataPresenter {
 
                         //save them in on object
                         BookingModel bookingModel = new BookingModel(id,  customerEmail,  roomID, roomTitle,
-                                startDate,  endDate,  status,imageUrl, bookingDays,  price,  totalPayment);
+                                startDate,  endDate,  status, imageUrl, bookingDays, price, totalPayment);
 
                         //send object to the activity
                         viewFetchMessage.onUpdateSuccess(bookingModel);
-
-
                     }
                 }
 

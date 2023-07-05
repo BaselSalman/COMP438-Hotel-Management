@@ -53,8 +53,8 @@ public class CurrentBookingAdapter extends RecyclerView.Adapter<CurrentBookingAd
         holder.edTitle.setText(roomTitle);
         holder.edStartDate.setText(new StringBuilder().append("Start Date: ").append(startDate).toString());
         holder.edNights.setText(new StringBuilder().append("Nights: ").append(String.valueOf(bookingDays)).toString());
-        holder.edPrice.setText(new StringBuilder().append("Price: ").append(String.valueOf(price)).append(" RM").toString());
-        holder.edTotal.setText(new StringBuilder().append("Total: ").append(String.valueOf(totalPayment)).append(" RM").toString());
+        holder.edPrice.setText(new StringBuilder().append("Price: ").append("$" + String.valueOf(price)).toString());
+        holder.edTotal.setText(new StringBuilder().append("Total: ").append("$" + String.valueOf(totalPayment)).toString());
         //set the image
         Picasso.with(this.context).load(imageUrl).fit().into(holder.imageView);
     }

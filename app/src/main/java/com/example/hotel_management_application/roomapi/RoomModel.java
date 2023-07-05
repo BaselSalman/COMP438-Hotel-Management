@@ -2,16 +2,16 @@ package com.example.hotel_management_application.roomapi;
 
 public class RoomModel {
     private String id, title, description, isAvailable, location;
-    //    private String imageUrl;
+    private String imageUrl;
     private int price;
 
-    public RoomModel(String id, String title, String description, String isAvailable, String location, /*String imageUrl,*/ int price) {
+    public RoomModel(String id, String title, String description, String isAvailable, String location, String imageUrl, int price) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.isAvailable = isAvailable;
         this.location = location;
-//        this.imageUrl = imageUrl;
+        this.imageUrl = imageUrl;
         this.price = price;
     }
 
@@ -55,13 +55,13 @@ public class RoomModel {
         this.location = location;
     }
 
-//    public String getImageUrl() {
-//        return imageUrl;
-//    }
-//
-//    public void setImageUrl(String imageUrl) {
-//        this.imageUrl = imageUrl;
-//    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public int getPrice() {
         return price;

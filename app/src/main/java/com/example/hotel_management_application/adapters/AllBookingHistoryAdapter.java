@@ -89,8 +89,6 @@ public class AllBookingHistoryAdapter extends RecyclerView.Adapter<AllBookingHis
             edTotal = itemView.findViewById(R.id.hscardTotalPrice);
             edendDate = itemView.findViewById(R.id.hsendDate);
             edMail = itemView.findViewById(R.id.hscardEmail);
-
-
         }
     }
 }

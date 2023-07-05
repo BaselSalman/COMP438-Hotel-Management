@@ -12,14 +12,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hotel_management_application.LocalDateTimeFormatter;
 import com.example.hotel_management_application.R;
 import com.example.hotel_management_application.bookingapi.BookingModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 
 
@@ -42,7 +47,7 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
 
     @Override
     public void onBindViewHolder(@NonNull ManageCurrentBookingAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        String id, CustomerEmail,roomID, roomTitle, startDate, endDate,status, imageUrl;
+        String id, CustomerEmail, roomID, roomTitle, startDate, endDate,status, imageUrl;
         int bookingDays, price, totalPayment;
 
         roomTitle = arrayList.get(holder.getAdapterPosition()).getRoomTitle();
@@ -63,8 +68,8 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
         holder.edStatus.setText("Status: "+status);
         holder.edStartDate.setText(new StringBuilder().append("Start Date: ").append(startDate).toString());
         holder.edNights.setText(new StringBuilder().append("Nights: ").append(String.valueOf(bookingDays)).toString());
-        holder.edPrice.setText(new StringBuilder().append("Price: ").append(String.valueOf(price)).append(" RM").toString());
-        holder.edTotal.setText(new StringBuilder().append("Total: ").append(String.valueOf(totalPayment)).append(" RM").toString());
+        holder.edPrice.setText(new StringBuilder().append("Price: ").append("$" + String.valueOf(price)).toString());
+        holder.edTotal.setText(new StringBuilder().append("Total: ").append("$" + String.valueOf(totalPayment)).toString());
         //set the image
         Picasso.with(this.context).load(imageUrl).fit().into(holder.imageView);
 
@@ -74,19 +79,32 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
             public void onClick(View view) {
                 FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
                 DocumentReference record = firebaseFirestore.collection("BookingData").document(id);
-                record.update("status", "checkedOut", "endDate", endDate).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                record.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(view.getContext(), "Booking Checked out", Toast.LENGTH_LONG).show();
-                        //delete from the ui
-                        arrayList.remove(holder.getAdapterPosition());
-                        notifyItemRemoved(holder.getAdapterPosition());
-                        notifyItemRangeChanged(holder.getAdapterPosition(), arrayList.size());
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(view.getContext(), e.getMessage(),Toast.LENGTH_LONG).show();
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        String startDateString = (String) documentSnapshot.get("startDate");
+                        int bookingDays = Integer.parseInt(documentSnapshot.get("bookingDays").toString());
+                        LocalDate date = LocalDateTimeFormatter.makeDateFromString(startDateString);
+                        if(LocalDate.now().isBefore(date.plusDays(bookingDays))) {
+                            Toast.makeText(view.getContext(), "Can't check out before the end date", Toast.LENGTH_LONG).show();
+                        } else {
+                            record.update("status", "checkedOut", "endDate", endDate).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(view.getContext(), "Booking Checked out", Toast.LENGTH_LONG).show();
+                                    //delete from the ui
+                                    arrayList.remove(holder.getAdapterPosition());
+                                    notifyItemRemoved(holder.getAdapterPosition());
+                                    notifyItemRangeChanged(holder.getAdapterPosition(), arrayList.size());
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(view.getContext(), e.getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
                     }
                 });
             }

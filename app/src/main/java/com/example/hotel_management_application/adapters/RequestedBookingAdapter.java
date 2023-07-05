@@ -60,8 +60,8 @@ public class RequestedBookingAdapter extends RecyclerView.Adapter<RequestedBooki
         holder.edStatus.setText("Status: "+status);
         holder.edStartDate.setText(new StringBuilder().append("Start Date: ").append(startDate).toString());
         holder.edNights.setText(new StringBuilder().append("Nights: ").append(String.valueOf(bookingDays)).toString());
-        holder.edPrice.setText(new StringBuilder().append("Price: ").append(String.valueOf(price)).append(" RM").toString());
-        holder.edTotal.setText(new StringBuilder().append("Total: ").append(String.valueOf(totalPayment)).append(" RM").toString());
+        holder.edPrice.setText(new StringBuilder().append("Price: ").append("$" + String.valueOf(price)).toString());
+        holder.edTotal.setText(new StringBuilder().append("Total: ").append("$" + String.valueOf(totalPayment)).toString());
         //set the image
         Picasso.with(this.context).load(imageUrl).fit().into(holder.imageView);
         //cancel booking
@@ -108,8 +108,6 @@ public class RequestedBookingAdapter extends RecyclerView.Adapter<RequestedBooki
             edStatus = itemView.findViewById(R.id.rcardStatus);
             edTotal = itemView.findViewById(R.id.rcardTotalPrice);
             cancel = itemView.findViewById(R.id.rcardCancel);
-
-
         }
     }
 }

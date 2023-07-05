@@ -41,7 +41,7 @@ public class ViewAllRoomsActivity extends AppCompatActivity implements RoomViewF
 
         menu = findViewById(R.id.onMenu);
         profile= findViewById(R.id.onProfile);
-        title.setText("All the available room");
+        title.setText("All the available rooms");
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +92,7 @@ public class ViewAllRoomsActivity extends AppCompatActivity implements RoomViewF
     public void onUpdateSuccess(RoomModel message) {
         if(message != null){
             RoomModel roomModel = new RoomModel(message.getId(),message.getTitle(),message.getDescription(),message.getIsAvailable(),
-                    message.getLocation(),/*message.getImageUrl(),*/message.getPrice());
+                    message.getLocation(), message.getImageUrl(), message.getPrice());
             roomModelArrayList.add(roomModel);
 
         }

@@ -91,7 +91,7 @@ public class RoomPageActivity extends AppCompatActivity implements RoomViewFetch
         //set the current room view
         vTitle.setText(title);
         vDesc.setText(description);
-        vPrice.setText(price+" RM");
+        vPrice.setText("$" + price);
         Picasso.with(this).load(imageUrl).fit().into(imageView);
         //get the similar room
         ListDataView = findViewById(R.id.SimilarListView);
@@ -151,7 +151,7 @@ public class RoomPageActivity extends AppCompatActivity implements RoomViewFetch
     public void onUpdateSuccess(RoomModel message) {
         if(message != null && !message.getId().equals(id)){
             RoomModel roomModel = new RoomModel(message.getId(),message.getTitle(),message.getDescription(),message.getIsAvailable(),
-                    message.getLocation(),/*message.getImageUrl(),*/message.getPrice());
+                    message.getLocation(), message.getImageUrl(), message.getPrice());
             roomModelArrayList.add(roomModel);
 
         }

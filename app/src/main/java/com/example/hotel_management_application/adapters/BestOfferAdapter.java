@@ -39,33 +39,31 @@ public class BestOfferAdapter  extends RecyclerView.Adapter<BestOfferAdapter.Vie
 
     @Override
     public void onBindViewHolder(@NonNull BestOfferAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        String title, description, location,imageUrl;
+        String title, description, location, imageUrl;
         int price;
 
         title = arrayList.get(holder.getAdapterPosition()).getTitle();
         description =arrayList.get(holder.getAdapterPosition()).getDescription();
         location = arrayList.get(holder.getAdapterPosition()).getLocation();
-//        imageUrl = arrayList.get(position).getImageUrl();
+        imageUrl = arrayList.get(position).getImageUrl();
         price = arrayList.get(holder.getAdapterPosition()).getPrice();
 
         holder.edTitle.setText(title);
-        holder.edPrice.setText(String.valueOf(price)+" RM");
+        holder.edPrice.setText("$" + String.valueOf(price));
         //set the image
-//        Picasso.with(this.context).load(imageUrl).fit().into(holder.imageView);
+        Picasso.with(this.context).load(imageUrl).fit().into(holder.imageView);
         String id= arrayList.get(holder.getAdapterPosition()).getId();
         //delete
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo open product page
-                System.out.println("you clicked the view !"+id);
                 Intent intent = new Intent(view.getContext(), RoomPageActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("id", id);
                 intent.putExtra("title", title);
                 intent.putExtra("description", description);
                 intent.putExtra("price", price);
-//                intent.putExtra("imageUrl",imageUrl);
+                intent.putExtra("imageUrl",imageUrl);
                 view.getContext().startActivity(intent);
             }
         });

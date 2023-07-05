@@ -17,14 +17,14 @@
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="let_s_write">Write,</string>
-    <string name="just_get_your_luggage_ready_your_fantastic_room_is_ready">Just get your luggage ready, your fantastic room is ready !</string>
+    <string name="welcome_text">Welcome into a world of comfort and luxury, where your dream room awaits for you</string>
     <string name="let_s_find_your_room">Find your room!</string>
     <string name="best_offers">Best Offers</string>
     <string name="view_all">View All</string>
     <string name="check_your_profile">Check your profile</string>
     <string name="logout">logout</string>
     <string name="master_room">Master Room</string>
-    <string name="all_service_you_need">All service you need!</string>
+    <string name="all_service_you_need">All services you need!</string>
     <string name="room_service">Room Service</string>
     <string name="booking_history">Booking History</string>
     <string name="current_booking">Current Booking</string>

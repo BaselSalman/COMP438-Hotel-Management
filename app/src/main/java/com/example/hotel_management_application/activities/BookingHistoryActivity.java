@@ -66,10 +66,10 @@ public class BookingHistoryActivity extends AppCompatActivity implements Booking
 
         ListDataView = findViewById(R.id.AllListView);
 
-        BookingFetchData roomFetchData = new BookingFetchData(this, this);
+        BookingFetchData bookingFetchData = new BookingFetchData(this, this);
 
         RecyclerViewMethod();
-        roomFetchData.onSuccessUpdate(this);
+        bookingFetchData.onSuccessUpdate(this);
 
     }
     public void RecyclerViewMethod() {

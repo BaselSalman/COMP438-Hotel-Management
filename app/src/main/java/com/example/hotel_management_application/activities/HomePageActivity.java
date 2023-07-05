@@ -60,7 +60,7 @@ public class HomePageActivity extends AppCompatActivity implements RoomViewFetch
     public void onUpdateSuccess(RoomModel message) {
         if(message != null){
             RoomModel roomModel = new RoomModel(message.getId(),message.getTitle(),message.getDescription(),message.getIsAvailable(),
-                    message.getLocation(),/*message.getImageUrl(),*/message.getPrice());
+                    message.getLocation(), message.getImageUrl(), message.getPrice());
             roomModelArrayList.add(roomModel);
 
         }

@@ -84,7 +84,6 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
 
     }
     private void uploadFile(){
-
         if(imageUri != null){
             Log.d(TAG, "uploadfile: getLastPathSegment type " + imageUri.getLastPathSegment());
             final ProgressDialog pd = new ProgressDialog(this);
@@ -95,7 +94,6 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                             fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
@@ -120,8 +118,6 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
                             pd.setMessage("Progress: "+ (int) progress + "%");
                         }
                     });
-
-
         }else{
             Toast.makeText(this, "No Image selected", Toast.LENGTH_LONG).show();
         }
@@ -134,13 +130,16 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
         String location = edLocation.getText().toString().trim();
         int price =Integer.parseInt(edPrice.getText().toString().trim());
 
-//        Log.d(TAG, "checkdetails: url before upload " + imageuri);
+        //////
+        Log.d(TAG, "checkdetails: url before upload " + imageuri);
+        //////
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String id = timestamp.toString().trim();
 
-        if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(Description) /*&& !TextUtils.isEmpty(imageuri)*/){
+        if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(Description)  && !TextUtils.isEmpty(imageuri) ){
 
-            roomUploadData.onSuccessUpdate(this,id,title,Description,isAvailable,location,/*imageuri,*/price);
+            roomUploadData.onSuccessUpdate(this,id,title,Description,isAvailable,location, imageuri, price);
 
         }else{
             if(TextUtils.isEmpty(title)){
@@ -158,26 +157,23 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
                 edPrice.setError("Price is required");
                 return;
             }
-//            if (TextUtils.isEmpty(imageuri)){
-//                Toast.makeText(AddRoomActivity.this, "Image is Required", Toast.LENGTH_SHORT).show();
-//            }
+            if (TextUtils.isEmpty(imageuri)){
+                Toast.makeText(AddRoomActivity.this, "Image is Required", Toast.LENGTH_SHORT).show();
+            }
         }
     }
     private void selectImage() {
-
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
+        //noinspection deprecation
         startActivityForResult(intent,100);
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 100 && data != null && data.getData() != null){
-
             imageUri = data.getData();
             Picasso.with(AddRoomActivity.this).load(imageUri).fit().into(imageView);
         }
@@ -188,8 +184,8 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
             Toast.makeText(AddRoomActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
         }
         else{
-//            uploadFile();
-            checkSignUpDetails(" ");
+            uploadFile();
+//            checkSignUpDetails(" ");
         }
     }
 
