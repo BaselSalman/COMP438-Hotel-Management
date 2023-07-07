@@ -9,14 +9,11 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.hotel_management_application.R;
 import com.example.hotel_management_application.adapters.ManageRoomsAdapter;
 import com.example.hotel_management_application.roomapi.RoomFetchData;
@@ -27,7 +24,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import javax.annotation.Nullable;
@@ -37,11 +33,9 @@ public class AdminManageRoomActivity extends Activity implements RoomViewFetchMe
     private RecyclerView ListDataView;
     private ManageRoomsAdapter manageRoomsAdapter;
     ArrayList<RoomModel> roomModelArrayList = new ArrayList<>();
-    private TextView title;
-    private RoomFetchData roomFetchData;
     public Uri imageUri;
     private StorageReference storageReference;
-    private StorageTask uploadtask;
+    private StorageTask uploadTask;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -50,12 +44,11 @@ public class AdminManageRoomActivity extends Activity implements RoomViewFetchMe
         setContentView(R.layout.listview_activity);
 
         ListDataView = findViewById(R.id.ListViewRoom);
-        title = findViewById(R.id.pageTitle);
+        TextView title = findViewById(R.id.pageTitle);
         title.setText("Manage Room Record");
-        roomFetchData = new RoomFetchData(this,this);
+        RoomFetchData roomFetchData = new RoomFetchData(this, this);
         RecyclerViewMethods();
         roomFetchData.onSuccessUpdate(this);
-
     }
 
     public void RecyclerViewMethods() {
@@ -70,12 +63,6 @@ public class AdminManageRoomActivity extends Activity implements RoomViewFetchMe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @android.support.annotation.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 100 && data != null && data.getData() != null){
-//            imageUri = data.getData();
-//            manageRoomsAdapter.imageUri = imageUri;
-////            Picasso.with(AdminManageRoomActivity.this).load(imageUri).fit().into();
-//            manageRoomsAdapter.uploadImage(requestCode, imageUri);
-//        }
         if (requestCode >= 0 && requestCode < roomModelArrayList.size() && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
             manageRoomsAdapter.uploadImage(requestCode, imageUri);
@@ -83,14 +70,12 @@ public class AdminManageRoomActivity extends Activity implements RoomViewFetchMe
     }
 
     private void uploadFile(){
-
         if(imageUri != null){
-//            Log.d(TAG, "uploadfile: getLastPathSegment type " + imageUri.getLastPathSegment());
             final ProgressDialog pd = new ProgressDialog(this);
             pd.setTitle("Uploading the image...");
             pd.show();
             StorageReference fileReference = storageReference.child(imageUri.getLastPathSegment());
-            uploadtask = fileReference.putFile(imageUri)
+            uploadTask = fileReference.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -99,9 +84,7 @@ public class AdminManageRoomActivity extends Activity implements RoomViewFetchMe
                                 public void onSuccess(Uri uri) {
                                     pd.dismiss();
                                     String sImageUri = uri.toString();
-//                                    Log.d(TAG, "uploadFile: url will be upload " + sImageUri);
                                     Toast.makeText(AdminManageRoomActivity.this, "Image Upload successful", Toast.LENGTH_SHORT).show();
-//                                    checkSignUpDetails(sImageUri);
                                 }
                             });
                         }

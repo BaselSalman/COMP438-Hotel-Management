@@ -6,25 +6,17 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.hotel_management_application.R;
 import com.example.hotel_management_application.bookingapi.BookingModel;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 
 public class AllBookingHistoryAdapter extends RecyclerView.Adapter<AllBookingHistoryAdapter.ViewHolder> {
-    private Context context;
+    private final Context context;
     private ArrayList<BookingModel> arrayList = new ArrayList<>();
 
     public AllBookingHistoryAdapter(Context context, ArrayList<BookingModel> arrayList) {
@@ -35,11 +27,12 @@ public class AllBookingHistoryAdapter extends RecyclerView.Adapter<AllBookingHis
     @NonNull
     @Override
     public AllBookingHistoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_all_booking_history, parent, false);
-        AllBookingHistoryAdapter.ViewHolder holder = new AllBookingHistoryAdapter.ViewHolder(view);
-        return holder;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.activity_all_booking_history, parent, false);
+        return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AllBookingHistoryAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String id, CustomerEmail,roomID, roomTitle, startDate, endDate,status, imageUrl;
@@ -56,28 +49,36 @@ public class AllBookingHistoryAdapter extends RecyclerView.Adapter<AllBookingHis
         bookingDays = arrayList.get(holder.getAdapterPosition()).getBookingDays();
         endDate = arrayList.get(holder.getAdapterPosition()).getEndDate();
 
-
         //set view
-        holder.edendDate.setText(endDate);
+        holder.endDate.setText(endDate);
         holder.edMail.setText(CustomerEmail);
         holder.edTitle.setText(roomTitle);
-        holder.edStatus.setText("Status: "+status);
-        holder.edStartDate.setText(new StringBuilder().append("Start Date: ").append(startDate).toString());
-        holder.edNights.setText(new StringBuilder().append("Nights: ").append(String.valueOf(bookingDays)).toString());
-        holder.edPrice.setText(new StringBuilder().append("Price: ").append(String.valueOf(price)).append(" RM").toString());
-        holder.edTotal.setText(new StringBuilder().append("Total: ").append(String.valueOf(totalPayment)).append(" RM").toString());
+        holder.edStatus.setText("Status: " + status);
+        holder.edStartDate.setText("Start Date: " + startDate);
+        holder.edNights.setText("Nights: " + bookingDays);
+        holder.edPrice.setText("Price: " + "$" + price);
+        holder.edTotal.setText("Total: " + "$" + totalPayment);
+
         //set the image
         Picasso.with(this.context).load(imageUrl).fit().into(holder.imageView);
-
     }
 
     @Override
     public int getItemCount() {
         return arrayList.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView edTitle, edPrice, edTotal, edStatus, edStartDate, edNights,edMail, edendDate;
-        private ImageView imageView;
+        private final TextView edTitle;
+        private final TextView edPrice;
+        private final TextView edTotal;
+        private final TextView edStatus;
+        private final TextView edStartDate;
+        private final TextView edNights;
+        private final TextView edMail;
+        private final TextView endDate;
+        private final ImageView imageView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             edTitle = itemView.findViewById(R.id.hscardTitle);
@@ -87,7 +88,7 @@ public class AllBookingHistoryAdapter extends RecyclerView.Adapter<AllBookingHis
             edStartDate = itemView.findViewById(R.id.hscardStartDate);
             edStatus = itemView.findViewById(R.id.hscardStatus);
             edTotal = itemView.findViewById(R.id.hscardTotalPrice);
-            edendDate = itemView.findViewById(R.id.hsendDate);
+            endDate = itemView.findViewById(R.id.hsendDate);
             edMail = itemView.findViewById(R.id.hscardEmail);
         }
     }

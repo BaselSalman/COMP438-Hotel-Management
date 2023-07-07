@@ -28,14 +28,17 @@
                 android:layout_gravity="center"
                 android:background="@drawable/room"
                 android:backgroundTint="@color/white"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="100"
+                    android:background="@color/blue"
                     android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content">
 
@@ -45,7 +48,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/status"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
@@ -58,8 +60,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/title"
+                        android:background="@color/light_green"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
                         android:textSize="14sp"
@@ -69,10 +71,13 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
+                android:background="@color/blue"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
@@ -87,7 +92,6 @@
                         android:layout_weight="50"
                         android:lines="1"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/start_date"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
@@ -101,10 +105,10 @@
                         android:layout_weight="50"
                         android:lines="1"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/nights"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        android:background="@color/light_green"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -112,9 +116,11 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
+                android:background="@color/blue"
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -130,7 +136,6 @@
                         android:layout_weight="50"
                         android:lines="1"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/price"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
@@ -144,21 +149,22 @@
                         android:layout_weight="50"
                         android:lines="1"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/total_payment"
                         android:textAlignment="textStart"
+                        android:background="@color/light_green"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-
                 </LinearLayout>
-
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
+                android:background="@color/blue"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
@@ -171,7 +177,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/customer_email"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
@@ -184,9 +189,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="60"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/email"
                         android:textAlignment="textStart"
+                        android:background="@color/light_green"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -202,6 +207,7 @@
                     android:orientation="horizontal"
                     android:weightSum="100"
                     android:layout_gravity="center_vertical"
+                    android:background="@color/blue"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -209,7 +215,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="40"
                         android:padding="10dp"
-                        android:background="@color/blue"
                         android:text="@string/checkout_at"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
@@ -222,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="60"
                         android:padding="10dp"
-                        android:background="@color/blue"
+                        android:background="@color/light_green"
                         android:text="@string/checkout"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"

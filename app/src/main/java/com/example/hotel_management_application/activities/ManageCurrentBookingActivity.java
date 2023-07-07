@@ -25,12 +25,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ManageCurrentBookingActivity extends AppCompatActivity implements BookingViewFetchMessage {
-    private RecyclerView ListDataView;
-    private ManageCurrentBookingAdapter Adapter;
+    private RecyclerView listDataView;
+    private ManageCurrentBookingAdapter adapter;
     ImageView menu;
     TextView title;
 
-    ArrayList<BookingModel> roomModelArrayList = new ArrayList<>();
+    ArrayList<BookingModel> bookingModels = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,43 +52,37 @@ public class ManageCurrentBookingActivity extends AppCompatActivity implements B
             }
         });
 
+        listDataView = findViewById(R.id.AdminListView);
 
-        ListDataView = findViewById(R.id.AdminListView);
-
-        BookingFetchData roomFetchData = new BookingFetchData(this, this);
+        BookingFetchData bookingFetchData = new BookingFetchData(this, this);
 
         RecyclerViewMethod();
-        roomFetchData.onSuccessUpdate(this);
-
+        bookingFetchData.onSuccessUpdate(this);
     }
-    public void RecyclerViewMethod() {
 
+    public void RecyclerViewMethod() {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
-        ListDataView.setLayoutManager(manager);
-        ListDataView.setItemAnimator(new DefaultItemAnimator());
-        ListDataView.setHasFixedSize(true);
+        listDataView.setLayoutManager(manager);
+        listDataView.setItemAnimator(new DefaultItemAnimator());
+        listDataView.setHasFixedSize(true);
 
-//        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
-//        ListDataView.setLayoutManager(mLayoutManager);
-
-        Adapter = new ManageCurrentBookingAdapter(this, roomModelArrayList);
-        ListDataView.setAdapter(Adapter);
-        ListDataView.invalidate();
+        adapter = new ManageCurrentBookingAdapter(this, bookingModels);
+        listDataView.setAdapter(adapter);
+        listDataView.invalidate();
     }
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onUpdateSuccess(BookingModel message) {
-        if(message != null &&message.getStatus().equals("accepted")){
-            BookingModel roomModel = new BookingModel(message.getId(),message.getCustomerEmail(),
+        if(message != null && message.getStatus().equals("accepted")){
+            BookingModel bookingModel = new BookingModel(message.getId(),message.getCustomerEmail(),
                     message.getRoomID(), message.getRoomTitle(), message.getStartDate(),
                     message.getEndDate(),message.getStatus(),message.getImageUrl(),
                     message.getBookingDays(),message.getPrice(),message.getTotalPayment());
-            roomModelArrayList.add(roomModel);
-
+            bookingModels.add(bookingModel);
         }
-        Adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
 

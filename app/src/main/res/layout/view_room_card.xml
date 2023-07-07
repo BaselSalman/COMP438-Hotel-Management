@@ -17,8 +17,10 @@
         android:id="@+id/CardView">
 
         <LinearLayout
+            android:id="@+id/roomCardLayout"
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:background="@color/blue"
             android:layout_height="wrap_content">
 
             <ImageView
@@ -26,8 +28,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_gravity="center"
-                android:background="@drawable/room"
+                android:background="@drawable/reload"
                 android:backgroundTint="@color/white"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -54,7 +57,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:background="@color/blue"
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -124,12 +126,12 @@
                     android:orientation="horizontal"
                     android:weightSum="100"
                     android:gravity="center_horizontal"
+                    android:background="@color/white"
                     android:layout_height="wrap_content">
                     <Button
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/vcardUpdate"
-                        android:drawableEnd="@drawable/update"
                         android:drawableTint="@color/white"
                         android:backgroundTint="@color/blue"
                         android:padding="10dp"
@@ -143,7 +145,6 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/vcardDelete"
-                        android:drawableEnd="@drawable/delete"
                         android:drawableTint="@color/white"
                         android:backgroundTint="@color/red"
                         android:padding="10dp"

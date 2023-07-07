@@ -3,13 +3,13 @@ package com.example.hotel_management_application.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +20,7 @@ import com.example.hotel_management_application.adapters.ApproveBookingAdapter;
 import com.example.hotel_management_application.bookingapi.BookingFetchData;
 import com.example.hotel_management_application.bookingapi.BookingModel;
 import com.example.hotel_management_application.bookingapi.BookingViewFetchMessage;
-import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -32,10 +32,11 @@ public class ApproveBookingActivity extends AppCompatActivity implements Booking
 
     ArrayList<BookingModel> roomModelArrayList = new ArrayList<>();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).hide (); //This Line hides the action bar
+        Objects.requireNonNull(getSupportActionBar()).hide(); //This Line hides the action bar
         setContentView(R.layout.admin_list_view);
         title = findViewById(R.id.pageTitle);
 
@@ -55,12 +56,12 @@ public class ApproveBookingActivity extends AppCompatActivity implements Booking
 
         ListDataView = findViewById(R.id.AdminListView);
 
-        BookingFetchData roomFetchData = new BookingFetchData(this, this);
+        BookingFetchData bookingFetchData = new BookingFetchData(this, this);
 
         RecyclerViewMethod();
-        roomFetchData.onSuccessUpdate(this);
-
+        bookingFetchData.onSuccessUpdate(this);
     }
+
     public void RecyclerViewMethod() {
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
@@ -68,10 +69,6 @@ public class ApproveBookingActivity extends AppCompatActivity implements Booking
         ListDataView.setLayoutManager(manager);
         ListDataView.setItemAnimator(new DefaultItemAnimator());
         ListDataView.setHasFixedSize(true);
-
-//        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
-//        ListDataView.setLayoutManager(mLayoutManager);
-
         Adapter = new ApproveBookingAdapter(this, roomModelArrayList);
         ListDataView.setAdapter(Adapter);
         ListDataView.invalidate();
@@ -80,11 +77,11 @@ public class ApproveBookingActivity extends AppCompatActivity implements Booking
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onUpdateSuccess(BookingModel message) {
-        if(message != null &&message.getStatus().equals("requested")){
-            BookingModel roomModel = new BookingModel(message.getId(),message.getCustomerEmail(),
+        if (message != null && message.getStatus().equals("requested")) {
+            BookingModel roomModel = new BookingModel(message.getId(), message.getCustomerEmail(),
                     message.getRoomID(), message.getRoomTitle(), message.getStartDate(),
-                    message.getEndDate(),message.getStatus(),message.getImageUrl(),
-                    message.getBookingDays(),message.getPrice(),message.getTotalPayment());
+                    message.getEndDate(), message.getStatus(), message.getImageUrl(),
+                    message.getBookingDays(), message.getPrice(), message.getTotalPayment());
             roomModelArrayList.add(roomModel);
 
         }

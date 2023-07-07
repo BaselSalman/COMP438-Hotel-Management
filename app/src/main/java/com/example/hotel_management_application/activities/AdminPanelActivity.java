@@ -1,7 +1,10 @@
 package com.example.hotel_management_application.activities;
 
+//import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,11 +68,23 @@ public class AdminPanelActivity extends AppCompatActivity {
     }
 
     public void onLogoutClick(View view) {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(AdminPanelActivity.this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout");
+        builder.setMessage("Are you sure you want to logout?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(AdminPanelActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override

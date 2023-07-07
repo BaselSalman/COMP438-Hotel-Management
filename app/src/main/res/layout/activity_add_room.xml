@@ -15,22 +15,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/adding_new_room"
-        android:textColor="@color/blue"
         android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:textSize="25sp" />
+        android:textColor="@color/blue"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/txtEventDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/black"
         android:text="@string/let_s_fill_up_the_needed_details"
         android:textAlignment="textStart"
-        android:textSize="14sp" />
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/edTitle"
@@ -99,15 +100,15 @@
         android:layout_weight="1">
 
         <TextView
-            android:layout_width="162dp"
-            android:layout_height="65dp"
+            android:layout_width="258dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="184dp"
-            android:layout_marginTop="49dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="136dp"
             android:text="@string/upload_room_photo"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -115,28 +116,30 @@
             android:id="@+id/pickImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="52dp"
             android:background="@drawable/add">
 
         </ImageView>
 
-
         <Button
             android:id="@+id/btnCreateEvent"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="100dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginEnd="120dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/blue"
             android:onClick="onAddClick"
             android:text="@string/add"
+            android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
 

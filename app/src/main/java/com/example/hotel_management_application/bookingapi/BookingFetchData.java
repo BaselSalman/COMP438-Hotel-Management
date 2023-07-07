@@ -11,9 +11,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-
 public class BookingFetchData implements BookingFetchDataPresenter {
-    private Context context;
+    private final Context context;
     private BookingViewFetchMessage viewFetchMessage;
 
     public BookingFetchData(Context context, BookingViewFetchMessage viewFetchMessage) {
@@ -58,7 +57,6 @@ public class BookingFetchData implements BookingFetchDataPresenter {
             @Override
             public void onFailure(@NonNull Exception e) {
                 viewFetchMessage.onUpdateFailure(e.getMessage());
-
             }
         });
     }

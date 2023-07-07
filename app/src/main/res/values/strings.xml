@@ -36,7 +36,7 @@
     <string name="add">Add</string>
     <string name="upload_room_photo">Upload Room Photo</string>
     <string name="adding_new_room">Adding new room</string>
-    <string name="let_s_fill_up_the_needed_details">Fill up the needed Details</string>
+    <string name="let_s_fill_up_the_needed_details">Fill up room\'s Details</string>
     <string name="room_title">Room Title</string>
     <string name="room_description">Room Description</string>
     <string name="room_price">Room Price</string>

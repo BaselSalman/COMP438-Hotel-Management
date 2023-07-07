@@ -85,7 +85,6 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
     }
     private void uploadFile(){
         if(imageUri != null){
-            Log.d(TAG, "uploadfile: getLastPathSegment type " + imageUri.getLastPathSegment());
             final ProgressDialog pd = new ProgressDialog(this);
             pd.setTitle("Uploading the image...");
             pd.show();
@@ -109,7 +108,6 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(AddRoomActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     }).addOnProgressListener(new com.google.firebase.storage.OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -126,26 +124,22 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
     private void checkSignUpDetails(String imageuri) {
         String isAvailable = "yes";
         String title = edTitle.getText().toString().trim();
-        String Description = edDesc.getText().toString().trim();
+        String description = edDesc.getText().toString().trim();
         String location = edLocation.getText().toString().trim();
         int price =Integer.parseInt(edPrice.getText().toString().trim());
-
-        //////
-        Log.d(TAG, "checkdetails: url before upload " + imageuri);
-        //////
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String id = timestamp.toString().trim();
 
-        if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(Description)  && !TextUtils.isEmpty(imageuri) ){
+        if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(description)  && !TextUtils.isEmpty(imageuri) ){
 
-            roomUploadData.onSuccessUpdate(this,id,title,Description,isAvailable,location, imageuri, price);
+            roomUploadData.onSuccessUpdate(this, id, title, description, isAvailable, location, imageuri, price);
 
         }else{
             if(TextUtils.isEmpty(title)){
                 edTitle.setError("Title is required");
                 return;
-            }if (TextUtils.isEmpty(Description)){
+            }if (TextUtils.isEmpty(description)){
                 edDesc.setError("Description is required");
                 return;
             }
@@ -185,7 +179,6 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
         }
         else{
             uploadFile();
-//            checkSignUpDetails(" ");
         }
     }
 
@@ -202,7 +195,6 @@ public class AddRoomActivity extends AppCompatActivity implements RoomViewMessag
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
-
     }
 
     @Override

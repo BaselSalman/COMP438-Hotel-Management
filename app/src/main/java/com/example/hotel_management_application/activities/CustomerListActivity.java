@@ -3,14 +3,11 @@ package com.example.hotel_management_application.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,6 +30,7 @@ public class CustomerListActivity extends AppCompatActivity implements UserViewF
 
     ArrayList<UserModel> roomModelArrayList = new ArrayList<>();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,22 +52,17 @@ public class CustomerListActivity extends AppCompatActivity implements UserViewF
         });
 
         ListDataView = findViewById(R.id.AdminListView);
-        UserFetchData roomFetchData = new UserFetchData(this, this);
+        UserFetchData userFetchData = new UserFetchData(this, this);
         RecyclerViewMethod();
-        roomFetchData.onSuccessUpdate(this);
-
+        userFetchData.onSuccessUpdate(this);
     }
-    public void RecyclerViewMethod() {
 
+    public void RecyclerViewMethod() {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         ListDataView.setLayoutManager(manager);
         ListDataView.setItemAnimator(new DefaultItemAnimator());
         ListDataView.setHasFixedSize(true);
-
-//        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
-//        ListDataView.setLayoutManager(mLayoutManager);
-
         Adapter = new CustomerListAdapter(this, roomModelArrayList);
         ListDataView.setAdapter(Adapter);
         ListDataView.invalidate();
@@ -79,9 +72,9 @@ public class CustomerListActivity extends AppCompatActivity implements UserViewF
     @Override
     public void onUpdateSuccess(UserModel message) {
         if(message != null){
-            UserModel roomModel = new UserModel(message.getName(),message.getEmail(),
+            UserModel userModel = new UserModel(message.getName(), message.getEmail(),
                     message.getPassword());
-            roomModelArrayList.add(roomModel);
+            roomModelArrayList.add(userModel);
         }
         Adapter.notifyDataSetChanged();
     }

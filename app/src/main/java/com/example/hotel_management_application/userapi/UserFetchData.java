@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class UserFetchData implements UserFetchDataPresenter{
-    private Context context;
+    private final Context context;
     private UserViewFetchMessage userViewFetchMessage;
 
     public UserFetchData(Context context, UserViewFetchMessage userViewFetchMessage) {

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotel_management_application.LocalDateTimeFormatter;
@@ -17,20 +18,19 @@ import com.example.hotel_management_application.R;
 import com.example.hotel_management_application.bookingapi.BookingModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 
 
 public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurrentBookingAdapter.ViewHolder> {
-    private Context context;
-    private ArrayList<BookingModel> arrayList = new ArrayList<>();
+    private final Context context;
+    private final ArrayList<BookingModel> arrayList;
 
     public ManageCurrentBookingAdapter(Context context, ArrayList<BookingModel> arrayList) {
         this.context = context;
@@ -41,19 +41,19 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
     @Override
     public ManageCurrentBookingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_manage_current_booking, parent, false);
-        ManageCurrentBookingAdapter.ViewHolder holder = new ManageCurrentBookingAdapter.ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ManageCurrentBookingAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        String id, CustomerEmail, roomID, roomTitle, startDate, endDate,status, imageUrl;
+        String id, customerEmail, roomID, roomTitle, startDate, endDate, status, imageUrl;
         int bookingDays, price, totalPayment;
 
         roomTitle = arrayList.get(holder.getAdapterPosition()).getRoomTitle();
         id = arrayList.get(holder.getAdapterPosition()).getId();
-        CustomerEmail = arrayList.get(holder.getAdapterPosition()).getCustomerEmail();
-        startDate =arrayList.get(holder.getAdapterPosition()).getStartDate();
+        customerEmail = arrayList.get(holder.getAdapterPosition()).getCustomerEmail();
+        startDate = arrayList.get(holder.getAdapterPosition()).getStartDate();
         status = arrayList.get(holder.getAdapterPosition()).getStatus();
         imageUrl = arrayList.get(holder.getAdapterPosition()).getImageUrl();
         price = arrayList.get(holder.getAdapterPosition()).getPrice();
@@ -63,13 +63,13 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
         endDate = timestamp.toString();
 
         //set view
-        holder.edMail.setText(CustomerEmail);
+        holder.edMail.setText(customerEmail);
         holder.edTitle.setText(roomTitle);
-        holder.edStatus.setText("Status: "+status);
-        holder.edStartDate.setText(new StringBuilder().append("Start Date: ").append(startDate).toString());
-        holder.edNights.setText(new StringBuilder().append("Nights: ").append(String.valueOf(bookingDays)).toString());
-        holder.edPrice.setText(new StringBuilder().append("Price: ").append("$" + String.valueOf(price)).toString());
-        holder.edTotal.setText(new StringBuilder().append("Total: ").append("$" + String.valueOf(totalPayment)).toString());
+        holder.edStatus.setText("Status: " + status);
+        holder.edStartDate.setText("Start Date: " + startDate);
+        holder.edNights.setText("Nights: " + bookingDays);
+        holder.edPrice.setText("Price: " + "$" + price);
+        holder.edTotal.setText("Total: " + "$" + totalPayment);
         //set the image
         Picasso.with(this.context).load(imageUrl).fit().into(holder.imageView);
 
@@ -86,7 +86,7 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
                         String startDateString = (String) documentSnapshot.get("startDate");
                         int bookingDays = Integer.parseInt(documentSnapshot.get("bookingDays").toString());
                         LocalDate date = LocalDateTimeFormatter.makeDateFromString(startDateString);
-                        if(LocalDate.now().isBefore(date.plusDays(bookingDays))) {
+                        if (LocalDate.now().isBefore(date.plusDays(bookingDays))) {
                             Toast.makeText(view.getContext(), "Can't check out before the end date", Toast.LENGTH_LONG).show();
                         } else {
                             record.update("status", "checkedOut", "endDate", endDate).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -101,7 +101,7 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(view.getContext(), e.getMessage(),Toast.LENGTH_LONG).show();
+                                    Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             });
                         }
@@ -115,10 +115,18 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
     public int getItemCount() {
         return arrayList.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView edTitle, edPrice, edTotal, edStatus, edStartDate, edNights,edMail;
-        private ImageView imageView;
-        private Button checkout;
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView edTitle;
+        private final TextView edPrice;
+        private final TextView edTotal;
+        private final TextView edStatus;
+        private final TextView edStartDate;
+        private final TextView edNights;
+        private final TextView edMail;
+        private final ImageView imageView;
+        private final Button checkout;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             edTitle = itemView.findViewById(R.id.mcardTitle);
@@ -130,7 +138,6 @@ public class ManageCurrentBookingAdapter extends RecyclerView.Adapter<ManageCurr
             edTotal = itemView.findViewById(R.id.mcardTotalPrice);
             edMail = itemView.findViewById(R.id.mcardEmail);
             checkout = itemView.findViewById(R.id.mcardCheckout);
-
         }
     }
 }
