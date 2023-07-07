@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "781048040962",
+    "project_id": "comp438-android",
+    "storage_bucket": "comp438-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781048040962:android:e7643aad729a5fcdb3e11b",
+        "android_client_info": {
+          "package_name": "com.example.hotelstars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781048040962-0ohdqrqs78a1oj2or85v1d1oe1sitjhp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hotelstars",
+            "certificate_hash": "169b227271091678f52cc604f0cb62aa1f569515"
+          }
+        },
+        {
+          "client_id": "781048040962-mucb6d26h56c6hmi6q35r5qcfth7kcp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-tCnlDeUTRqjevV0vAs2tZQlBDB0kak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781048040962-mucb6d26h56c6hmi6q35r5qcfth7kcp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
