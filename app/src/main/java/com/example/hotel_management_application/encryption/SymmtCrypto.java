@@ -38,7 +38,8 @@ public class SymmtCrypto {   //secret chars
         cipher.init(Cipher.ENCRYPT_MODE, key);
         //cipher introduces fundamental methods: update(), doFinal()
         byte[] cipherText = cipher.doFinal( data.getBytes() );
-        return Base64.getEncoder().encodeToString(cipherText);}
+        return Base64.getEncoder().encodeToString(cipherText);
+    }
 
 
     //decrypt: Input: cipherText; Output: Original data

@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/drawable/add.xml" value="0.1" />
+        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/drawable/email.xml" value="0.124" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/drawable/gradient_background.xml" value="0.2505" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/drawable/person.xml" value="0.2505" />
+        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/drawable/verify.xml" value="0.2145" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_add_room.xml" value="0.264" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_admin.xml" value="0.1" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_admin_manage.xml" value="0.1" />
@@ -18,15 +20,15 @@
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_customer_list.xml" value="0.264" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_home_page.xml" value="0.264" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_manage_current_booking.xml" value="0.264" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_register_page.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_requested_booking.xml" value="0.1" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_room_page.xml" value="0.264" />
-        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_room_service.xml" value="0.1" />
-        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_user_menu.xml" value="0.4" />
-        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_user_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_room_service.xml" value="0.264" />
+        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_user_menu.xml" value="0.264" />
+        <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_verify_email.xml" value="0.1" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_view_all.xml" value="0.25" />
         <entry key="..\:/Users/Twitter Store/Desktop/Mobile Development/HotelManagementApplication/app/src/main/res/layout/activity_view_all_rooms.xml" value="0.1" />

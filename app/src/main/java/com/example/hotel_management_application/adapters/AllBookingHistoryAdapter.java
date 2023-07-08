@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class AllBookingHistoryAdapter extends RecyclerView.Adapter<AllBookingHistoryAdapter.ViewHolder> {
     private final Context context;
-    private ArrayList<BookingModel> arrayList = new ArrayList<>();
+    private ArrayList<BookingModel> arrayList;
 
     public AllBookingHistoryAdapter(Context context, ArrayList<BookingModel> arrayList) {
         this.context = context;

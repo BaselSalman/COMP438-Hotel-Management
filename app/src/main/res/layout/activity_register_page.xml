@@ -92,7 +92,6 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/background"
-        android:drawableEnd="@drawable/smile"
         android:drawableTint="@color/white"
         android:text="@string/register"
         android:textStyle="bold"
@@ -124,7 +123,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-

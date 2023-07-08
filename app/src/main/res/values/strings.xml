@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Comfort Corner</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="email"> Email</string>
+    <string name="password"> Password</string>
     <string name="login">LOGIN</string>
     <string name="register">SIGN UP</string>
-    <string name="name">Name</string>
+    <string name="name"> Name</string>
     <string name="save">Save</string>
     <string name="enterdetails">Enter note details</string>
     <string name="newaccount">Create new account!</string>
     <string name="haveccount">Already have an account!</string>
-    <string name="verifyEmail">Please check your email and click on the sent link to verify your account!</string>
+    <string name="verifyEmail">Please check your email and click on the link to verify your account!</string>
     <string name="my_profile">My Profile</string>
     <string name="vname">Name:</string>
     <string name="not_found">Not found!</string>
@@ -17,7 +17,7 @@
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="let_s_write">Write,</string>
-    <string name="welcome_text">Welcome into a world of comfort and luxury, where your dream room awaits for you</string>
+    <string name="welcome_text">Welcome to your gateway to unforgettable experiences. Discover a world of hospitality, convenience, and relaxation at your fingertips.</string>
     <string name="let_s_find_your_room">Find your room!</string>
     <string name="best_offers">Best Offers</string>
     <string name="view_all">View All</string>
